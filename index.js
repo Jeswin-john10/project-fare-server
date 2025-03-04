@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 // import express
 const express = require("express")
 
@@ -9,20 +11,24 @@ const cors= require("cors")
 // import router
 const router = require("./router")
 
+//import connection
+require('./connection')
+
 // create server
 const pfserver = express()
 
 // use cors
 pfserver.use(cors())
 
-// user router
-pfserver.use(router)
+
 
 //parse data
 pfserver.use(express.json())
 
-//user router
-// pfserver.use(router)
+// use router
+pfserver.use(router)
+
+
 
 // set port number
 const PORT= 4000 || process.env.PORT
